@@ -284,10 +284,8 @@ function deletaCard(index) {
     fetch(`http://localhost:4002/planeta?name=${namePlaneta}`, {
         method: 'DELETE',
     })
-        .then(res => res.text())
-        .then(res => console.log(res))
-
-
+    .then(res => res.text())
+    .then(res => console.log(res))
 
     let fundoModal = document.querySelector('#fundo-modal');
     fundoModal.style.display = "none";
@@ -307,7 +305,9 @@ function voltar() {
 
 function identificaDados(index) {
 
-    window.location.href = "../html/descricaoPlaneta.html?name=" + index + "&length=";
+    window.location.href = "../html/descricaoPlaneta.html?id="+index;
+
+    
 
 }
 

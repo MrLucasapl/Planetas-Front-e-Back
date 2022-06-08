@@ -4,7 +4,7 @@ function pegarParametro() {
 
     var url = window.location.search;
     var urlParametro = new URLSearchParams(url);
-    var index = urlParametro.get('name');
+    var index = urlParametro.get('id');
 
     mostraDados(index);
     trocarDados(index);
@@ -33,7 +33,7 @@ function percorreEsquerda(novoIndex) {
     let novoID = novoIndex - 1;
 
     if (novoID < 0) {
-        novoID = data.length - 1;
+        novoID = originalData.length - 1;
         mostraDados(novoID);
     }
 
@@ -46,7 +46,7 @@ function percorreDireita(novoIndex) {
 
     let novoID = novoIndex + 1;
 
-    if (novoID > (data.length - 1)) {
+    if (novoID > (originalData.length - 1)) {
         novoID = 0;
         mostraDados(novoID);
     }
@@ -60,27 +60,27 @@ function percorreDireita(novoIndex) {
 function mostraDados(index) {
 
     let nome = document.getElementById('nome');
-    nome.innerHTML = data[index].name;
+    nome.innerHTML = originalData[index].name;
 
     let descricao = document.getElementById('descricao');
-    descricao.innerHTML = data[index].description;
+    descricao.innerHTML = originalData[index].description;
 
     let imgplaneta = document.getElementById('imgplaneta');
-    imgplaneta.src = data[index].image;
+    imgplaneta.src = originalData[index].image;
 
     let area = document.getElementById('area');
-    area.innerHTML = data[index].area;
+    area.innerHTML = originalData[index].area;
 
     let distacia = document.getElementById('distacia');
-    distacia.innerHTML = data[index].sunDistance;
+    distacia.innerHTML = originalData[index].sunDistance;
 
     let time = {
 
-        dia: Math.floor(data[index].durationDay / 86400000),
-        hora: Math.floor(data[index].durationDay / 3600000) % 24,
-        minutos: Math.floor(data[index].durationDay / 60000) % 60,
-        segundo: Math.floor(data[index].durationDay / 1000) % 60,
-        milisegundos: Math.floor(data[index].durationDay) % 1000
+        dia: Math.floor(originalData[index].durationDay / 86400000),
+        hora: Math.floor(originalData[index].durationDay / 3600000) % 24,
+        minutos: Math.floor(originalData[index].durationDay / 60000) % 60,
+        segundo: Math.floor(originalData[index].durationDay / 1000) % 60,
+        milisegundos: Math.floor(originalData[index].durationDay) % 1000
 
     };
 
@@ -89,7 +89,7 @@ function mostraDados(index) {
     duracao.innerHTML = respostaDuracao;
 
     let gravidade = document.getElementById('gravidade');
-    gravidade.innerHTML = data[index].gravity;
+    gravidade.innerHTML = originalData[index].gravity;
 
 }
 
@@ -104,27 +104,27 @@ function editarPlaneta(idEditar) {
             switch (input.id) {
 
                 case "input-nome":
-                    data[idEditar].name = document.getElementById('input-nome').value;
+                    originalData[idEditar].name = document.getElementById('input-nome').value;
                     break;
 
                 case "input-area":
-                    data[idEditar].area = document.getElementById('input-area').value;
+                    originalData[idEditar].area = document.getElementById('input-area').value;
                     break;
 
                 case "input-descricao":
-                    data[idEditar].description = document.getElementById('input-descricao').value;
+                    originalData[idEditar].description = document.getElementById('input-descricao').value;
                     break;
 
                 case "input-distancia":
-                    data[idEditar].sunDistance = document.getElementById('input-distancia').value;
+                    originalData[idEditar].sunDistance = document.getElementById('input-distancia').value;
                     break;
 
                 case "input-duracao":
-                    data[idEditar].durationDay = document.getElementById('input-duracao').value;
+                    originalData[idEditar].durationDay = document.getElementById('input-duracao').value;
                     break;
 
                 case "input-gravidade":
-                    data[idEditar].gravity = document.getElementById('input-gravidade').value;
+                    originalData[idEditar].gravity = document.getElementById('input-gravidade').value;
                     break;
             }
 
