@@ -103,28 +103,28 @@ function editarPlaneta(idEditar) {
 
             switch (input.id) {
 
-                case "input-nome":
-                    originalData[idEditar].name = document.getElementById('input-nome').value;
+                case "inputnome":
+                    originalData[idEditar].name = document.getElementById('inputnome').value;
                     break;
 
-                case "input-area":
-                    originalData[idEditar].area = document.getElementById('input-area').value;
+                case "inputarea":
+                    originalData[idEditar].area = document.getElementById('inputarea').value;
                     break;
 
-                case "input-descricao":
-                    originalData[idEditar].description = document.getElementById('input-descricao').value;
+                case "inputdescricao":
+                    originalData[idEditar].description = document.getElementById('inputdescricao').value;
                     break;
 
-                case "input-distancia":
-                    originalData[idEditar].sunDistance = document.getElementById('input-distancia').value;
+                case "inputdistancia":
+                    originalData[idEditar].sunDistance = document.getElementById('inputdistancia').value;
                     break;
 
-                case "input-duracao":
-                    originalData[idEditar].durationDay = document.getElementById('input-duracao').value;
+                case "inputduracao":
+                    originalData[idEditar].durationDay = document.getElementById('inputduracao').value;
                     break;
 
-                case "input-gravidade":
-                    originalData[idEditar].gravity = document.getElementById('input-gravidade').value;
+                case "inputgravidade":
+                    originalData[idEditar].gravity = document.getElementById('inputgravidade').value;
                     break;
             }
 

@@ -55,12 +55,15 @@ app.delete("/planeta", (req, res) => {
     res.sendStatus(200)
 });
 
-/* app.get("/planetas", (req, res) => {
+app.post("/descricaoplaneta", (req, res) => {
 
-    const reqPlaneta = req.query.name;
-    const atualizar = dados.data.findIndex((planeta) => planeta.name === reqPlaneta);
-    res.sendFile("http://localhost:4002/descricaoPlaneta.html?id=" + atualizar)
+    /* const reqPlaneta = req.body; */
+    const reqPlaneta = req.query.inputnome;
+    console.log(reqPlaneta);
+    
+   /*  const atualizar = dados.data.findIndex((planeta) => planeta.name === reqPlaneta);
+    res.sendFile("http://localhost:4002/descricaoPlaneta.html?id=" + atualizar) */
 
-}); */
+});
 
 app.listen(4002, () => console.log("server rodando na porta 4002"))

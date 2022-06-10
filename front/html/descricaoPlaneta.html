@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/marte.png">
     <link rel="stylesheet" href="../css/descricaoPlaneta.css">
     <title> Planetas </title>
 </head>
@@ -79,28 +80,28 @@
             <div class="container-painel-editavel">
                 <h4>Editar planeta</h4>
 
-                <form id="form-dados" onsubmit="">
+                <form id="form-dados" action="/descricaoplaneta" method="POST" enctype="application/x-www-form-urlencoded">
                     <div id="container-form">
                         <div class="form-nome-area">
-                            <input type="text" id="input-nome" placeholder="Nome do planeta" required>
-                            <input type="text" id="input-area" placeholder="Área da superfície" required>
+                            <input type="text" id="inputnome" placeholder="Nome do planeta" required>
+                            <input type="text" id="inputarea" placeholder="Área da superfície" required>
                         </div>
                         <div class="form-descricao">
-                            <input type="text" id="input-descricao" placeholder="Descrição do planeta" required>
+                            <input type="text" id="inputdescricao" placeholder="Descrição do planeta" required>
                         </div>
                     </div>
                     <div class="form-distancia-duracao-gravidade">
-                        <input type="text" id="input-distancia" placeholder="Distância do Sol" required>
+                        <input type="text" id="inputdistancia" placeholder="Distância do Sol" required>
 
-                        <input type="text" id="input-duracao" placeholder="Duração do dia" required>
+                        <input type="text" id="inputduracao" placeholder="Duração do dia" required>
 
-                        <input type="text" id="input-gravidade" placeholder="Gravidade" required>
+                        <input type="text" id="inputgravidade" placeholder="Gravidade" required>
                     </div>
                     <div class="buttons-cancelar-salvar">
                         <button type="btn-reset" onclick="cancelarEdicao()" value="Cancelar"
                             id="form-botao-cancel">Cancelar</button>
 
-                        <button type="button" value="Salvar" id="form-botao-salvar">Salvar</button>
+                        <button type="submit" value="Salvar" id="form-botao-salvar">Salvar</button>
                     </div>
                 </form>
             </div>
