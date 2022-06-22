@@ -29,11 +29,11 @@ app.post("/html/login", (req, res) => {
     if (status != false) {
         status = validacao.validaUsuario(status, reqLogin, reqSenha);
 
-        (status == true) ? res.sendFile(__dirname + "/front/html/home.html") : res.send("Login ou senha incorretas");
+        (status == true) ? res.sendFile(__dirname + "/front/html/home.html") : res.status(404).send({mensagem : "Login ou senha incorretas"});
 
     } else {
 
-        return res.status(404).send('cadastro não encontrado');
+        return res.status(404).send({mensagem : "cadastro não encontrado"});
 
     }
 
