@@ -38,5 +38,5 @@ const validaUsuario = (status, reqLogin, reqsenha) => {
 
 module.exports = {
     procuraUsuario,
-    validaUsuario
+    validaUsuario,
 }

@@ -5,7 +5,7 @@ document.forms['fomulario-login'].addEventListener('submit', (event) => {
         method: 'POST',
         body: new URLSearchParams(new FormData(event.target))
     })
-    
+
         .then((res) => {
             return res.json();
         })
@@ -21,8 +21,12 @@ document.forms['fomulario-login'].addEventListener('submit', (event) => {
                     alert('cadastro não encontrado');
                     break;
 
+                case "/html/home.html":
+                    window.location.href = "/html/home.html";
+                    break;
+
                 default:
-                    console.log(`Desculpe, erro`);
+                    console.log(`Desculpe`);
 
             }
         })

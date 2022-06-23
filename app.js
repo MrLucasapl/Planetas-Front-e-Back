@@ -9,7 +9,9 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, 'front')));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.json()); 
+
+const planetas = [];
 
 app.get("/", (req, res) => {
     return res.sendFile(__dirname + "/front/index.html");
@@ -29,11 +31,11 @@ app.post("/html/login", (req, res) => {
     if (status != false) {
         status = validacao.validaUsuario(status, reqLogin, reqSenha);
 
-        (status == true) ? res.sendFile(__dirname + "/front/html/home.html") : res.status(404).send({mensagem : "Login ou senha incorretas"});
+        (status == true) ? res.status(200).send({ mensagem: "/html/home.html" }) : res.status(404).send({ mensagem: "Login ou senha incorretas" });
 
     } else {
 
-        return res.status(404).send({mensagem : "cadastro não encontrado"});
+        return res.status(404).send({ mensagem: "cadastro não encontrado" });
 
     }
 
@@ -60,10 +62,19 @@ app.post("/descricaoplaneta", (req, res) => {
     /* const reqPlaneta = req.body; */
     const reqPlaneta = req.query.inputnome;
     console.log(reqPlaneta);
-    
-   /*  const atualizar = dados.data.findIndex((planeta) => planeta.name === reqPlaneta);
-    res.sendFile("http://localhost:4002/descricaoPlaneta.html?id=" + atualizar) */
+
+    /*  const atualizar = dados.data.findIndex((planeta) => planeta.name === reqPlaneta);
+     res.sendFile("http://localhost:4002/descricaoPlaneta.html?id=" + atualizar) */
 
 });
+
+app.post("/html/addPlanetas.html", (req, res) => {
+    console.log("aqui")
+    const reqPlanetas = req.body.originalData[0];
+    console.log(typeof reqPlanetas)
+    console.log(reqPlanetas)
+    res.send(JSON.stringify({reqPlanetas}))
+    
+})
 
 app.listen(4002, () => console.log("server rodando na porta 4002"))

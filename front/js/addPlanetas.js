@@ -45,18 +45,30 @@ function salvarNovoPlaneta() {
         "gravity": document.getElementById('input-gravidade').value
     }
 
-    data.push(novoPlaneta);
-    salvardadosdoarquivo(data);
+    originalData.push(novoPlaneta);
+    salvardadosdoarquivo(originalData);
 
 }
 
-async function salvardadosdoarquivo(data) {
-    const arquivoSalvar = await window.showSaveFilePicker();
-    const fluxoArquivo = await arquivoSalvar.createWritable();
-    await fluxoArquivo.write(new Blob([JSON.stringify({ data })], { type: "text/plain" }));
-    await fluxoArquivo.close();
-}
+async function salvardadosdoarquivo(originalData) {
 
+    let url = new URL(window.location.href);
+    console.log(url.pathname)
+    console.log(originalData[originalData.length - 1])
+
+    fetch(url.pathname, {
+        method: 'POST',
+        body: JSON.stringify(originalData[originalData.length - 1]),
+        headers: { "Content-type": "application/json; charset=UTF-8" }
+    })
+        .then((res) => {
+            return res.json();
+        })
+        .then(json => {
+            console.log(json)
+        })
+
+}
 
 function validaCampo() {
 
@@ -96,7 +108,7 @@ function cancelarEdicao() {
 function sliderCardes() {
 
     const slider = document.querySelectorAll(".container-caixas")[0];
-    console.log(slider)
+
     let isDown = false;
     let startX;
     let scrollLeft;
