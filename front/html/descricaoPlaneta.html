@@ -79,8 +79,8 @@
 
             <div class="container-painel-editavel">
                 <h4>Editar planeta</h4>
-
-                <form id="form-dados" action="/descricaoplaneta" method="POST" enctype="application/x-www-form-urlencoded">
+                
+               <!--  <form id="form-dados" action="/descricaoplaneta" method="POST" enctype="application/x-www-form-urlencoded"> -->
                     <div id="container-form">
                         <div class="form-nome-area">
                             <input type="text" id="inputnome" placeholder="Nome do planeta" required>
@@ -101,9 +101,9 @@
                         <button type="btn-reset" onclick="cancelarEdicao()" value="Cancelar"
                             id="form-botao-cancel">Cancelar</button>
 
-                        <button type="submit" value="Salvar" id="form-botao-salvar">Salvar</button>
+                        <button onclick="salvarEdicao()" type="button" value="Salvar" id="form-botao-salvar">Salvar</button>
                     </div>
-                </form>
+               <!--  </form> -->
             </div>
 
         </main>

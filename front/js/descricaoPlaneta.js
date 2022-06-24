@@ -10,6 +10,8 @@ function pegarParametro() {
     trocarDados(index);
     editarPlaneta(index);
 
+    return index;
+
 }
 
 function trocarDados(id) {
@@ -136,9 +138,23 @@ function editarPlaneta(idEditar) {
 
 }
 
-function salvarEdicao(idEditar) {
+function salvarEdicao() {
 
-    editarPlaneta(idEditar)
+    let index = pegarParametro();
+    let name, area
+
+    (document.getElementById('inputnome').value != "") ? name = document.getElementById('inputnome').value : name = originalData[index].name;
+    (document.getElementById('inputarea').value != "")? area = document.getElementById('inputarea').area : name = originalData[index].area;
+    (document.getElementById('inputdescricao').value != "")? description = document.getElementById('inputdescricao').value : description = originalData[index].description;
+    /* terminar */
+
+
+
+    let sunDistance = document.getElementById('inputdistancia').value;
+    let durationDay = document.getElementById('inputduracao').value;
+    let gravity = document.getElementById('inputgravidade').value;
+
+    console.log(name)
 
 }
 
@@ -157,7 +173,6 @@ function cancelarEdicao() {
 function sliderCardes() {
 
     const slider = document.querySelectorAll(".container-caixas")[0];
-    console.log(slider)
     let isDown = false;
     let startX;
     let scrollLeft;
