@@ -26,92 +26,93 @@
             </nav>
         </header>
         <main>
+            <form id="form-dados" action="/addPlanetas" method="POST" enctype="multipart/form-data">
 
-            <section class="caixa-voltar">
-                <a class="link-voltar" href="./planetas.html">
-                    <img src="/img/Caminho 468@2x.png" alt="seta para esqueda">
-                    <p>Home/</p>
-                    <p>Planetas/</p>
-                    <span>Adicionar Planetas</span>
-                </a>
-            </section>
+                <section class="caixa-voltar">
+                    <a class="link-voltar" href="./planetas.html">
+                        <img src="/img/Caminho 468@2x.png" alt="seta para esqueda">
+                        <p>Home/</p>
+                        <p>Planetas/</p>
+                        <span>Adicionar Planetas</span>
+                    </a>
+                </section>
 
-            <section class="container-pai">
+                <section class="container-pai">
 
-                <div id="caixa-img-planetas">
-                    <img class="seta" src="/img/Caminho 464@2x.png" alt="seta esquerda">
+                    <div id="caixa-img-planetas">
+                        <img class="seta" src="/img/Caminho 464@2x.png" alt="seta esquerda">
 
-                    <label for="addfoto" action="" method="get">
-                        <input id="addfoto" type="file" accept="image/*" onchange="enviarImg(event)">
-                    </label>
+                        <label for="addfoto" action="/addPlanetas" method="POST">
+                            <input id="addfoto" type="file" name="image" onchange="enviarImg(event)">
+                        </label>
 
-                    <img class="seta" src="/img/Caminho 465@2x.png" alt="seta direita">
-                </div>
-
-                <div id="caixa-info">
-                    <div class="caixa-nome-planeta">
-                        <p>PLANETA</p>
-                        <h2 id="nome">-</h2>
-                        <span></span>
+                        <img class="seta" src="/img/Caminho 465@2x.png" alt="seta direita">
                     </div>
 
-                    <div class="caixa-descricao-planeta">
-                        <p id="descricao">Informe uma descrição...</p>
+                    <div id="caixa-info">
+                        <div class="caixa-nome-planeta">
+                            <p>PLANETA</p>
+                            <h2 id="nome">-</h2>
+                            <span></span>
+                        </div>
+
+                        <div class="caixa-descricao-planeta">
+                            <p id="descricao">Informe uma descrição...</p>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <div class="container-caixas">
+                <div class="container-caixas">
 
-                <div class="caixas-dados">
-                    <strong>Área de superfície</strong>
-                    <p id="area">-</p>
-                </div>
-                <div class="caixas-dados">
-                    <strong>Distância do sol</strong>
-                    <p id="distacia">-</p>
-                </div>
-                <div class="caixas-dados">
-                    <strong>Duração do dia</strong>
-                    <p id="duracao">-</p>
-                </div>
-                <div class="caixas-dados">
-                    <strong>Gravidade</strong>
-                    <p id="gravidade">-</p>
+                    <div class="caixas-dados">
+                        <strong>Área de superfície</strong>
+                        <p id="area">-</p>
+                    </div>
+                    <div class="caixas-dados">
+                        <strong>Distância do sol</strong>
+                        <p id="distacia">-</p>
+                    </div>
+                    <div class="caixas-dados">
+                        <strong>Duração do dia</strong>
+                        <p id="duracao">-</p>
+                    </div>
+                    <div class="caixas-dados">
+                        <strong>Gravidade</strong>
+                        <p id="gravidade">-</p>
+                    </div>
+
                 </div>
 
-            </div>
+                <div class="container-painel-editavel">
+                    <h4>Editar planeta</h4>
 
-            <div class="container-painel-editavel">
-                <h4>Editar planeta</h4>
-
-                <form id="form-dados" onsubmit="">
                     <div id="container-form">
                         <div class="form-nome-area">
-                            <input type="text" id="input-nome" placeholder="Nome do planeta" required>
-                            <input type="text" id="input-area" placeholder="Área da superfície" required>
+                            <input type="text" id="input-nome" name="nome" placeholder="Nome do planeta" required>
+                            <input type="text" id="input-area" name="area" placeholder="Área da superfície" required>
                         </div>
                         <div class="form-descricao">
-                            <input type="text" id="input-descricao" placeholder="Descrição do planeta" required>
+                            <input type="text" id="input-descricao" name="descricao" placeholder="Descrição do planeta"
+                                required>
                         </div>
                     </div>
                     <div class="form-distancia-duracao-gravidade">
-                        <input type="text" id="input-distancia" placeholder="Distância do Sol" required>
+                        <input type="text" id="input-distancia" name="distancia" placeholder="Distância do Sol"
+                            required>
 
-                        <input type="text" id="input-duracao" placeholder="Duração do dia" required>
+                        <input type="text" id="input-duracao" name="duracao" placeholder="Duração do dia" required>
 
-                        <input type="text" id="input-gravidade" placeholder="Gravidade" required>
+                        <input type="text" id="input-gravidade" name="gravidade" placeholder="Gravidade" required>
                     </div>
                     <div class="buttons-cancelar-salvar">
-                        <button type="btn-reset" onclick="cancelarEdicao()" value="Cancelar"
+                        <button type="button" onclick="cancelarEdicao()" value="Cancelar"
                             id="form-botao-cancel">Cancelar</button>
 
-                        <button type="button" onclick="botaoSalvar()" value="Salvar"
+                        <button type="submit" onclick="botaoSalvar()" value="Salvar"
                             id="form-botao-salvar">Salvar</button>
                     </div>
-                </form>
-            </div>
-
+                </div>
+            </form>
         </main>
     </div>
 </body>

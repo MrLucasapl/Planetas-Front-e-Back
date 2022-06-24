@@ -3,15 +3,35 @@ const bodyParser = require("body-parser");
 const path = require('path');
 const validacao = require('./js/login');
 const dados = require('./planetas.json');
-const Fs = require('fs');
+const multer = require('multer');
+const filesystem = require('fs');
 
 const app = express();
 
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, __dirname + "/front/img");
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    }
+})
+
+const upload = multer({ storage: storage });
+
 app.use(express.static(path.join(__dirname, 'front')));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json()); 
+app.use(bodyParser.json());
 
-const planetas = [];
+let planetas = [];
+
+filesystem.readFile("planetas.json", "utf-8", (erro, data) => {
+    if (erro) {
+        console.log(erro)
+    } else {
+        planetas = JSON.parse(data);
+    }
+});
 
 app.get("/", (req, res) => {
     return res.sendFile(__dirname + "/front/index.html");
@@ -48,11 +68,20 @@ app.get("/html/planetas", (req, res) => {
 
 });
 
+app.get("/planetas.html", (req, res) => {
+    return res.sendFile(__dirname + "/front/html/planetas.html");
+});
+
+app.get("/home.html", (req, res) => {
+    return res.sendFile(__dirname + "/front/html/home.html");
+});
+
 app.delete("/planeta", (req, res) => {
 
     const reqPlaneta = req.query.name;
-    const deletar = dados.data.findIndex((planeta) => planeta.name === reqPlaneta);
-    dados.data.splice(deletar, 1);
+    const deletar = dados.findIndex((planeta) => planeta.name === reqPlaneta);
+    console.log(deletar);
+    dados.splice(deletar, 1);
 
     res.sendStatus(200)
 });
@@ -68,13 +97,39 @@ app.post("/descricaoplaneta", (req, res) => {
 
 });
 
-app.post("/html/addPlanetas.html", (req, res) => {
+app.post("/addPlanetas", upload.single("image"), async (req, res) => {
     console.log("aqui")
-    const reqPlanetas = req.body.originalData[0];
-    console.log(typeof reqPlanetas)
-    console.log(reqPlanetas)
-    res.send(JSON.stringify({reqPlanetas}))
-    
+
+    const reposta = req.body;
+    const urlImg = "/img/" + req.file.originalname;
+
+    const novoPlaneta = {
+        name: reposta.nome,
+        image: urlImg,
+        description: reposta.descricao,
+        area: reposta.area,
+        durationday: reposta.duracao,
+        sundistance: reposta.distancia,
+        gravity: reposta.gravidade
+    }
+
+    planetas.push(novoPlaneta);
+    console.log(planetas)
+    escreverJson(planetas)
+    res.sendFile(__dirname + "/front/html/addPlanetas.html");
+
 })
+
+function escreverJson(planetas) {
+
+    filesystem.writeFile("planetas.json", JSON.stringify(planetas), (erro) => {
+        if (erro) {
+            console.log(erro)
+        } else {
+            console.log("cadastrado com sucesso!")
+        }
+    });
+
+}
 
 app.listen(4002, () => console.log("server rodando na porta 4002"))

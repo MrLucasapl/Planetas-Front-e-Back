@@ -31,45 +31,6 @@ function subirImagem(arquivo) {
 
 }
 
-function salvarNovoPlaneta() {
-
-    var novoPlaneta = new Object;
-
-    novoPlaneta = {
-        "name": document.getElementById('input-nome').value,
-        "image": document.getElementById("addfoto").style.backgroundImage.replace('url("', '').slice(0, -2),
-        "description": document.getElementById('input-descricao').value,
-        "area": document.getElementById('input-area').value,
-        "durationDay": document.getElementById('input-duracao').value,
-        "sunDistance": document.getElementById('input-distancia').value,
-        "gravity": document.getElementById('input-gravidade').value
-    }
-
-    originalData.push(novoPlaneta);
-    salvardadosdoarquivo(originalData);
-
-}
-
-async function salvardadosdoarquivo(originalData) {
-
-    let url = new URL(window.location.href);
-    console.log(url.pathname)
-    console.log(originalData[originalData.length - 1])
-
-    fetch(url.pathname, {
-        method: 'POST',
-        body: JSON.stringify(originalData[originalData.length - 1]),
-        headers: { "Content-type": "application/json; charset=UTF-8" }
-    })
-        .then((res) => {
-            return res.json();
-        })
-        .then(json => {
-            console.log(json)
-        })
-
-}
-
 function validaCampo() {
 
     let inputs = document.querySelectorAll('input');

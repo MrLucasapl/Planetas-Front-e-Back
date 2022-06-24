@@ -13,8 +13,8 @@ function filtrarCardes(planetas) {
     if ((input1.value == "") && (input2.value == 0) && (input3.value == 0)) {
 
         limparTela();
-        planetasCardes(data);
-        tabelaCorporativa(data);
+        planetasCardes(planetas);
+        tabelaCorporativa(planetas);
 
     } else if ((input1.value == "") && (input2 != 0) && (input3 != 0)) {
 
@@ -23,12 +23,12 @@ function filtrarCardes(planetas) {
             case "1":
                 if (input3.value == "1") {
                     limparTela();
-                    let valor = data.sort(function (a, b) { return a.area > b.area ? -1 : a.area < b.area ? 1 : 0; });
+                    let valor = planetas.sort(function (a, b) { return a.area > b.area ? -1 : a.area < b.area ? 1 : 0; });
                     planetasCardes(valor);
                     tabelaCorporativa(valor);
                 } else {
                     limparTela();
-                    let valor = data.sort(function (a, b) { return a.area < b.area ? -1 : a.area > b.area ? 1 : 0; });
+                    let valor = planetas.sort(function (a, b) { return a.area < b.area ? -1 : a.area > b.area ? 1 : 0; });
                     planetasCardes(valor);
                     tabelaCorporativa(valor);
                 }
@@ -37,12 +37,12 @@ function filtrarCardes(planetas) {
             case "2":
                 if (input3.value == "1") {
                     limparTela();
-                    let valor = data.sort(function (a, b) { return a.sunDistance > b.sunDistance ? -1 : a.sunDistance < b.sunDistance ? 1 : 0; });
+                    let valor = planetas.sort(function (a, b) { return a.sunDistance > b.sunDistance ? -1 : a.sunDistance < b.sunDistance ? 1 : 0; });
                     planetasCardes(valor);
                     tabelaCorporativa(valor);
                 } else {
                     limparTela();
-                    let valor = data.sort(function (a, b) { return a.sunDistance < b.sunDistance ? -1 : a.sunDistance > b.sunDistance ? 1 : 0; });
+                    let valor = planetas.sort(function (a, b) { return a.sunDistance < b.sunDistance ? -1 : a.sunDistance > b.sunDistance ? 1 : 0; });
                     planetasCardes(valor);
                     tabelaCorporativa(valor);
                 }
@@ -51,12 +51,12 @@ function filtrarCardes(planetas) {
             case "3":
                 if (input3.value == "1") {
                     limparTela();
-                    let valor = data.sort(function (a, b) { return a.durationDay > b.durationDay ? -1 : a.durationDay < b.durationDay ? 1 : 0; });
+                    let valor = planetas.sort(function (a, b) { return a.durationDay > b.durationDay ? -1 : a.durationDay < b.durationDay ? 1 : 0; });
                     planetasCardes(valor);
                     tabelaCorporativa(valor);
                 } else {
                     limparTela();
-                    let valor = data.sort(function (a, b) { return a.durationDay < b.durationDay ? -1 : a.durationDay > b.durationDay ? 1 : 0; });
+                    let valor = planetas.sort(function (a, b) { return a.durationDay < b.durationDay ? -1 : a.durationDay > b.durationDay ? 1 : 0; });
                     planetasCardes(valor);
                     tabelaCorporativa(valor);
                 }
@@ -65,12 +65,12 @@ function filtrarCardes(planetas) {
             case "4":
                 if (input3.value == "1") {
                     limparTela();
-                    let valor = data.sort(function (a, b) { return a.gravity > b.gravity ? -1 : a.gravity < b.gravity ? 1 : 0; });
+                    let valor = planetas.sort(function (a, b) { return a.gravity > b.gravity ? -1 : a.gravity < b.gravity ? 1 : 0; });
                     planetasCardes(valor);
                     tabelaCorporativa(valor);
                 } else {
                     limparTela();
-                    let valor = data.sort(function (a, b) { return a.gravity < b.gravity ? -1 : a.gravity > b.gravity ? 1 : 0; });
+                    let valor = planetas.sort(function (a, b) { return a.gravity < b.gravity ? -1 : a.gravity > b.gravity ? 1 : 0; });
                     planetasCardes(valor);
                     tabelaCorporativa(valor);
                 }
