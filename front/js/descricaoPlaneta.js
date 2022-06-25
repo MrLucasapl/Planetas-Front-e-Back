@@ -138,23 +138,38 @@ function editarPlaneta(idEditar) {
 
 }
 
-function salvarEdicao() {
+async function salvarEdicao() {
 
     let index = pegarParametro();
-    let name, area
+
+    let name, area, description, sunDistance, durationDay, gravity;
 
     (document.getElementById('inputnome').value != "") ? name = document.getElementById('inputnome').value : name = originalData[index].name;
-    (document.getElementById('inputarea').value != "")? area = document.getElementById('inputarea').area : name = originalData[index].area;
-    (document.getElementById('inputdescricao').value != "")? description = document.getElementById('inputdescricao').value : description = originalData[index].description;
-    /* terminar */
+    (document.getElementById('inputarea').value != "") ? area = document.getElementById('inputarea').value : area = originalData[index].area;
+    (document.getElementById('inputdescricao').value != "") ? description = document.getElementById('inputdescricao').value : description = originalData[index].description;
+    (document.getElementById('inputdistancia').value != "") ? sunDistance = document.getElementById('inputdistancia').value : sunDistance = originalData[index].sunDistance;
+    (document.getElementById('inputduracao').value != "") ? durationDay = document.getElementById('inputduracao').value : durationDay = originalData[index].durationDay;
+    (document.getElementById('inputgravidade').value != "") ? gravity = document.getElementById('inputgravidade').value : gravity = originalData[index].gravity;
 
+    let planetasEditar = {
+        index: index,
+        name: name,
+        description: description,
+        area: area,
+        durationday: durationDay,
+        sundistance: sunDistance,
+        gravity: gravity,
+    }
 
+    console.log(window.location.origin);
+    console.log(window.location.pathname);
+    console.log(planetasEditar);
 
-    let sunDistance = document.getElementById('inputdistancia').value;
-    let durationDay = document.getElementById('inputduracao').value;
-    let gravity = document.getElementById('inputgravidade').value;
-
-    console.log(name)
+    await fetch("http://localhost:4002/html/descricaoPlaneta.html", {
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST',
+        body: JSON.stringify(planetasEditar)
+    })
 
 }
 

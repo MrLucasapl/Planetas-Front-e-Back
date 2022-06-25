@@ -86,19 +86,13 @@ app.delete("/planeta", (req, res) => {
     res.sendStatus(200)
 });
 
-app.post("/descricaoplaneta", (req, res) => {
+app.post("/html/descricaoPlaneta.html", (req, res) => {
 
-    /* const reqPlaneta = req.body; */
-    const reqPlaneta = req.query.inputnome;
-    console.log(reqPlaneta);
-
-    /*  const atualizar = dados.data.findIndex((planeta) => planeta.name === reqPlaneta);
-     res.sendFile("http://localhost:4002/descricaoPlaneta.html?id=" + atualizar) */
+    console.log(req.body)
 
 });
 
 app.post("/addPlanetas", upload.single("image"), async (req, res) => {
-    console.log("aqui")
 
     const reposta = req.body;
     const urlImg = "/img/" + req.file.originalname;
@@ -114,7 +108,6 @@ app.post("/addPlanetas", upload.single("image"), async (req, res) => {
     }
 
     planetas.push(novoPlaneta);
-    console.log(planetas)
     escreverJson(planetas)
     res.sendFile(__dirname + "/front/html/addPlanetas.html");
 
