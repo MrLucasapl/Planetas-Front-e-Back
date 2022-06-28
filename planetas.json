@@ -2,7 +2,7 @@
     {
         "name": "Mercúrio",
         "image": "/img/Mercurio.png",
-        "description": "Mercúrio é o primeiro e menor e mais interno planeta do Sistema Solar, orbitando o Sol a cada 87,969 dias terrestres. A sua órbita tem a maior excentricidade e o seu eixo apresenta a menor inclinação em relação ao plano da órbita dentre todos os planetas do Sistema Solar.",
+        "description": "Essa é a Lua",
         "area": 4878,
         "durationDay": 579000,
         "sunDistance": 578943759609,
@@ -79,14 +79,5 @@
         "durationDay": 34000000,
         "sunDistance": 6412000000,
         "gravity": 17.567
-    },
-    {
-        "name": "lua",
-        "image": "/img/transferir.jfif",
-        "description": "esta é a luca",
-        "area": 3213256465,
-        "durationDay": 65462169846216,
-        "sunDistance": 8549656465132,
-        "gravity": 36216854621
     }
 ]
