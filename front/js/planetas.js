@@ -100,8 +100,9 @@ function retirarAcentos(planeta) {
     let planetaSemAcento;
 
     planetaSemAcento = planeta.replace(/[àáâãäå]/g, "a");
-    planetaSemAcento = planetaSemAcento.replace(/[ùúû]/g, "u");
-    planetaSemAcento = planetaSemAcento.replace(/[èéê]/g, "e");
+    planetaSemAcento = planetaSemAcento.replace(/[ùúûü]/g, "u");
+    planetaSemAcento = planetaSemAcento.replace(/[èéêë]/g, "e");
+    planetaSemAcento = planetaSemAcento.replace(/[óòôõö]/g, "o");
     planetaSemAcento = planetaSemAcento.replace(/[ç]/g, "c");
 
     return planetaSemAcento;
