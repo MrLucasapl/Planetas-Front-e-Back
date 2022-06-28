@@ -138,7 +138,7 @@ function editarPlaneta(idEditar) {
 
 }
 
-async function salvarEdicao() {
+function salvarEdicao() {
 
     let index = pegarParametro();
 
@@ -152,20 +152,16 @@ async function salvarEdicao() {
     (document.getElementById('inputgravidade').value != "") ? gravity = document.getElementById('inputgravidade').value : gravity = originalData[index].gravity;
 
     let planetasEditar = {
-        index: index,
+        index:  parseFloat(index),
         name: name,
         description: description,
-        area: area,
-        durationday: durationDay,
-        sundistance: sunDistance,
-        gravity: gravity,
+        area: parseFloat(area),
+        durationDay: parseFloat(durationDay),
+        sunDistance: parseFloat(sunDistance),
+        gravity: parseFloat(gravity),
     }
 
-    console.log(window.location.origin);
-    console.log(window.location.pathname);
-    console.log(planetasEditar);
-
-    await fetch("http://localhost:4002/html/descricaoPlaneta.html", {
+    fetch("http://localhost:4002/html/descricaoPlaneta.html", {
         headers: { 'Content-Type': 'application/json' },
         method: 'POST',
         body: JSON.stringify(planetasEditar)

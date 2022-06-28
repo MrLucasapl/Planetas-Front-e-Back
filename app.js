@@ -76,19 +76,31 @@ app.get("/home.html", (req, res) => {
     return res.sendFile(__dirname + "/front/html/home.html");
 });
 
-app.delete("/planeta", (req, res) => {
+app.delete("/planeta/:index", (req, res) => {
 
-    const reqPlaneta = req.query.name;
-    const deletar = dados.findIndex((planeta) => planeta.name === reqPlaneta);
-    console.log(deletar);
-    dados.splice(deletar, 1);
+    console.log(req.params.index)
+    const reqPlaneta = req.params.index;
+    planetas.splice(reqPlaneta, 1);
+    escreverJson(planetas);
 
     res.sendStatus(200)
 });
 
 app.post("/html/descricaoPlaneta.html", (req, res) => {
 
-    console.log(req.body)
+    const { index, name, area, description, sunDistance, durationDay, gravity } = req.body
+
+    planetas[index] = {
+        ...planetas[index],
+        name,
+        area,
+        description,
+        sunDistance,
+        durationDay,
+        gravity
+    }
+
+    escreverJson(planetas)
 
 });
 
@@ -101,10 +113,10 @@ app.post("/addPlanetas", upload.single("image"), async (req, res) => {
         name: reposta.nome,
         image: urlImg,
         description: reposta.descricao,
-        area: reposta.area,
-        durationday: reposta.duracao,
-        sundistance: reposta.distancia,
-        gravity: reposta.gravidade
+        area: parseFloat(reposta.area),
+        durationDay: parseFloat(reposta.duracao),
+        sunDistance: parseFloat(reposta.distancia),
+        gravity: parseFloat(reposta.gravidade)
     }
 
     planetas.push(novoPlaneta);

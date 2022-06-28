@@ -49,7 +49,7 @@ function validaCampo() {
 }
 
 function botaoSalvar() {
-    console.log("entrou")
+    
     validaCampo();
 
 }

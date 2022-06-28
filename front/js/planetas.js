@@ -2,6 +2,7 @@
 function listaDados(data) {
     limparTela();
     planetasCardes(data);
+    tabelaCorporativa(data);
 }
 
 function filtrarCardes(planetas) {
@@ -172,7 +173,7 @@ function tabelaCorporativa(planetas) {
 
     let caixaTabela = document.getElementById('caixa-tabela');
     caixaTabela.appendChild(tabela);
-
+    
     planetas?.forEach((planeta, index) => {
 
         let linhaDados = document.createElement('tr');
@@ -281,11 +282,10 @@ function deletaCard(index) {
     delete originalData[i];
     let novaData = originalData;
 
-    fetch(`http://localhost:4002/planeta?name=${namePlaneta}`, {
+    fetch(`http://localhost:4002/planeta/${i}`, {
+        headers: { 'Content-Type': 'application/json' },
         method: 'DELETE',
     })
-    .then(res => res.text())
-    .then(res => console.log(res))
 
     let fundoModal = document.querySelector('#fundo-modal');
     fundoModal.style.display = "none";
