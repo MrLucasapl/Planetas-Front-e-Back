@@ -7,17 +7,17 @@ function listaDados(data) {
 
 function filtrarCardes(planetas) {
 
-    let input1 = document.querySelectorAll("#buscar")[0];
+    let input1 = document.querySelectorAll("#buscar")[0].value.toLowerCase();
     let input2 = document.querySelectorAll(".menu")[0];
     let input3 = document.querySelectorAll(".menu")[1];
 
-    if ((input1.value == "") && (input2.value == 0) && (input3.value == 0)) {
+    if ((input1 == "") && (input2.value == 0) && (input3.value == 0)) {
 
         limparTela();
         planetasCardes(planetas);
         tabelaCorporativa(planetas);
 
-    } else if ((input1.value == "") && (input2 != 0) && (input3 != 0)) {
+    } else if ((input1 == "") && (input2 != 0) && (input3 != 0)) {
 
         switch (input2.value) {
 
@@ -80,11 +80,31 @@ function filtrarCardes(planetas) {
 
     } else {
         limparTela();
-        let planetasFiltrados = planetas?.filter((planeta) => planeta.name.toLowerCase().includes(input1.value));
+
+        let planetasFiltrados = planetas?.filter((planeta) => {
+            let nome = planeta.name.toLowerCase();
+            let novoimput = retirarAcentos(input1);
+            nome = retirarAcentos(nome);
+            nome = nome.includes(novoimput);
+
+            return nome;
+        });
+
         planetasCardes(planetasFiltrados);
         tabelaCorporativa(planetasFiltrados);
     }
 
+}
+
+function retirarAcentos(planeta) {
+    let planetaSemAcento;
+
+    planetaSemAcento = planeta.replace(/[àáâãäå]/g, "a");
+    planetaSemAcento = planetaSemAcento.replace(/[ùúû]/g, "u");
+    planetaSemAcento = planetaSemAcento.replace(/[èéê]/g, "e");
+    planetaSemAcento = planetaSemAcento.replace(/[ç]/g, "c");
+
+    return planetaSemAcento;
 }
 
 function planetasCardes(planetas) {
@@ -173,7 +193,7 @@ function tabelaCorporativa(planetas) {
 
     let caixaTabela = document.getElementById('caixa-tabela');
     caixaTabela.appendChild(tabela);
-    
+
     planetas?.forEach((planeta, index) => {
 
         let linhaDados = document.createElement('tr');
@@ -305,9 +325,9 @@ function voltar() {
 
 function identificaDados(index) {
 
-    window.location.href = "../html/descricaoPlaneta.html?id="+index;
+    window.location.href = "../html/descricaoPlaneta.html?id=" + index;
 
-    
+
 
 }
 
